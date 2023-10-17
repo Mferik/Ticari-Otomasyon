@@ -14,5 +14,9 @@ namespace WebApplication1.Models.Sınıflar
         public int Adet { get; set; }
         public decimal Fiyat { get; set; }
         public decimal ToplamTutar { get; set; }
+
+        public ICollection<Ürün> Ürüns { get; set; }
+        public ICollection<Cariler> Carilers { get; set; }
+        public ICollection<Personel> Personels { get; set; }
     }
 }
