@@ -7,5 +7,6 @@ namespace WebApplication1.Models.Sınıflar
         [Key]
         public int KategoriID { get; set; }
         public string KategoriAd { get; set; }
+        public ICollection<Ürün> Ürüns { get; set; }
     }
 }
