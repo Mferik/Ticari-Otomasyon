@@ -35,5 +35,19 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult KategoriGetir(int id)
+        {
+            var kategori = c.Kategoris.Find(id);
+            return View("KategoriGetir",kategori);
+        }
+
+        public ActionResult KategoriGüncelle(Kategori k)
+        {
+            var kategori = c.Kategoris.Find(k.KategoriID);
+            kategori.KategoriAd=k.KategoriAd;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
