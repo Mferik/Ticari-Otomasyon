@@ -7,6 +7,7 @@ namespace WebApplication1.Models.Sınıflar
         [Key]
         public int DepartmanId { get; set; }
         public string DepartmanAdı { get; set; }
+        public ICollection<Personel> Personels { get; set; }
 
     }
 }
