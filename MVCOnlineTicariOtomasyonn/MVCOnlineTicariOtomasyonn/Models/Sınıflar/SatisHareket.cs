@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models.Sınıflar
 {
@@ -15,8 +17,8 @@ namespace WebApplication1.Models.Sınıflar
         public decimal Fiyat { get; set; }
         public decimal ToplamTutar { get; set; }
 
-        public ICollection<Ürün> Ürüns { get; set; }
-        public ICollection<Cariler> Carilers { get; set; }
-        public ICollection<Personel> Personels { get; set; }
+        public Ürün Ürün { get; set; }
+        public Cariler Cariler { get; set; }
+        public Personel Personel { get; set; }
     }
 }

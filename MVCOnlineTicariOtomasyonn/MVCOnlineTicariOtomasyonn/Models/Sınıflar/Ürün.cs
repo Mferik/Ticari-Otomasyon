@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models.Sınıflar
 {
     public class Ürün
     {
+        [Key]
         public int UrunID { get; set; }
         [Column(TypeName ="Varchar")]
         [StringLength(30)]
@@ -21,7 +24,7 @@ namespace WebApplication1.Models.Sınıflar
         public string UrunGorsel { get; set; }
         public Kategori Kategori { get; set; }
 
-        public SatisHareket SatisHareket { get; set; }
+        public ICollection<SatisHareket> SatisHarekets { get; set; }
 
     }
 }
