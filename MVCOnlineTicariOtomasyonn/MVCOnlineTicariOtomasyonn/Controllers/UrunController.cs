@@ -12,10 +12,22 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
         // GET: Urun
         Context c = new Context();
         public ActionResult Index()
-            
         {
             var urunler = c.Ürüns.ToList();
             return View(urunler);
         }
+        [HttpGet]
+        public ActionResult YeniUrun()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniUrun(Ürün u)
+        {
+            c.Ürüns.Add(u);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
+    
 }
