@@ -43,6 +43,19 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult UrunGetir(int id)
+        {
+
+            List<SelectListItem> deger1 = (from x in c.Kategoris.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.KategoriAd,
+                                               Value = x.KategoriID.ToString()
+                                           }).ToList();
+            ViewBag.dgr1 = deger1;
+            var urun = c.Ürüns.Find(id);
+            return View("UrunGetir",urun);
+        }
     }
 
 }
