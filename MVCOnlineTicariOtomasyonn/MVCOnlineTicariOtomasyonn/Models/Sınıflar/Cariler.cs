@@ -9,7 +9,8 @@ namespace WebApplication1.Models.Sınıflar
         [Key]
         public int CariId { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
+        [StringLength(30,ErrorMessage ="En fazla 30 karakter yazılır")]
+        [Required(ErrorMessage ="Bu Alanı boş geçemezsiniz")]
         public string CariAd { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
