@@ -58,7 +58,10 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
 
         public ActionResult DepartmanPersonelSatis(int id)
         {
-            return View();
+            var degerler = c.SatisHarekets.Where(x=>x.PersonelId == id).ToList();
+            var personel = c.Personels.Where(x => x.PersonelId == id).Select(y => y.PersonelAd +" "+ y.PersonelSoyad).FirstOrDefault();
+            ViewBag.dpers=personel;
+            return View(degerler);
         }
     }
 }
