@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +25,25 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
         public ActionResult DepartmanEkle(Departman d)
         {
             c.Departmans.Add(d);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult DepartmanSil(int id)
+        {
+            var departman = c.Departmans.Find(id);
+            departman.Durum = false;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult DepartmanGetir(int id)
+        {
+            var departman = c.Departmans.Find(id);
+            return View("DepartmanGetir", departman);
+        }
+        public ActionResult DepartmanGüncelle(Departman d)
+        {
+            var departman = c.Departmans.Find(d.DepartmanId);
+            departman.DepartmanAdı = d.DepartmanAdı;
             c.SaveChanges();
             return RedirectToAction("Index");
         }
