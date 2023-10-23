@@ -12,10 +12,11 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
         Context c = new Context();
         public ActionResult Index()
         {
-            var degerler = c.Departmans.ToList();
+            var degerler = c.Departmans.Where(x => x.Durum == true).ToList();
             return View(degerler);
         }
-        [HttpGet] public ActionResult DepartmanEkle()
+        [HttpGet]
+        public ActionResult DepartmanEkle()
         {
             return View();
         }
