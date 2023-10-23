@@ -9,11 +9,32 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
     public class PersonelController : Controller
     {
         // GET: Personel
+        Context c = new Context();
         public ActionResult Index()
         {
-            Context c = new Context();
+
             var degerler = c.Personels.ToList();
             return View(degerler);
+        }
+        [HttpGet]
+        public ActionResult PersonelEkle()
+        {
+            List<SelectListItem> deger1 = (from x in c.Departmans.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.DepartmanAdı,
+                                               Value = x.DepartmanId.ToString()
+                                           }).ToList();
+            ViewBag.dgr1 = deger1;
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PersonelEkle(Personel p)
+        {
+            c.Personels.Add(p);
+            c.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
