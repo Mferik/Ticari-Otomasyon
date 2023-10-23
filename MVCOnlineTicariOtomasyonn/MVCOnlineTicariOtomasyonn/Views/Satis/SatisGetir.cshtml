@@ -8,12 +8,12 @@
 <br />
 <h2>Satış İşlemi Güncelleme Sayfası</h2>
 <br />
-@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post))
+@using (Html.BeginForm("SatisGuncelle", "Satis", FormMethod.Post))
 {
     @Html.HiddenFor(x => x.SatisId)
 
     @Html.LabelFor(x => x.Ürün)
-    @Html.DropDownListFor(x => x.Ürün.UrunID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
     <br />
     @Html.Label("Cari")
     @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
