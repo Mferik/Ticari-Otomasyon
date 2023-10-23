@@ -25,6 +25,7 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
         public ActionResult DepartmanEkle(Departman d)
         {
             c.Departmans.Add(d);
+            d.Durum = true;
             c.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -46,6 +47,10 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
             departman.DepartmanAdı = d.DepartmanAdı;
             c.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult DepartmanDetay(int id)
+        {
+            return View();
         }
     }
 }
