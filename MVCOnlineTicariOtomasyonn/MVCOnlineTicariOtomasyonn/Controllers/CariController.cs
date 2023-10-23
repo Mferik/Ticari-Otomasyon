@@ -12,7 +12,7 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
         Context c = new Context();
         public ActionResult Index()
         {
-            var degerler = c.Carilers.ToList();
+            var degerler = c.Carilers.Where(x=>x.Durum==true).ToList();
             return View(degerler);
         }
         [HttpGet]
@@ -21,9 +21,17 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult YeniCari(Cariler p)
+        public ActionResult YeniCari(Cariler cari)
         {
-            c.Carilers.Add(p);
+            c.Carilers.Add(cari);
+            cari.Durum = true;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult CariSil(int id)
+        {
+            var cari = c.Carilers.Find(id);
+            cari.Durum = false;
             c.SaveChanges();
             return RedirectToAction("Index");
         }
