@@ -20,6 +20,14 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
             ViewBag.d3 = deger3;
             var deger4 = c.Kategoris.Count().ToString();
             ViewBag.d4 = deger4;
+            var deger5 = c.Ürüns.Sum(x=>x.Stok).ToString();
+            ViewBag.d5 = deger5;
+            var deger6 = (from x in c.Ürüns select x.Marka).Distinct().Count().ToString();
+            ViewBag.d6 = deger6;
+            var deger7 = c.Ürüns.Count(x=>x.Stok<=20).ToString();
+            ViewBag.d7 = deger7;
+            var deger8 = (from x in c.Ürüns orderby x.SatisFiyat descending select x.UrunAd).FirstOrDefault();
+            ViewBag.d8 = deger8;
             return View();
         }
     }
