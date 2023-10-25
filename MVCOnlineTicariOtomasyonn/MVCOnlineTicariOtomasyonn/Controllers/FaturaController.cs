@@ -50,5 +50,17 @@ namespace MVCOnlineTicariOtomasyonn.Controllers
             var degerler = c.FaturaKalems.Where(x => x.FaturaId == id).ToList();       
             return View(degerler);
         }
+        [HttpGet]
+        public ActionResult YeniKalem()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniKalem(FaturaKalem fk)
+        {
+            c.FaturaKalems.Add(fk);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
