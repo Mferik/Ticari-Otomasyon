@@ -19,13 +19,16 @@ namespace WebApplication1.Models.Sınıflar
         [Column(TypeName = "Varchar")]
         [StringLength(60)]
         public string VergiDairesi { get; set; }
-        public DateTime Saat { get; set; }
+        [Column(TypeName = "char")]
+        [StringLength(5)]
+        public string Saat { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string TeslimEden { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string TeslimAlan { get; set; }
+        public decimal Toplam { get; set; }
         public ICollection<Faturalar> Faturalars { get; set; }
     }
 }
